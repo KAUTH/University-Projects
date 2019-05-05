@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<highLevelNaoApp:NaoApp xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:highLevelNaoApp="file:/home/student/Desktop/hackathon/metamodel/highLevelNaoApp.ecore">
+  <hasActivity xsi:type="highLevelNaoApp:Start" order="1">
+    <hasTransition hasNextHLActivity="//@hasActivity.1"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:BodyStance" order="2">
+    <hasTransition hasNextHLActivity="//@hasActivity.2"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="3" text="Hello everybody, this is the first challenge!" volume="80">
+    <hasTransition hasNextHLActivity="//@hasActivity.3"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Dice" order="4">
+    <hasTransition hasNextHLActivity="//@hasActivity.5"/>
+    <hasTransition hasNextHLActivity="//@hasActivity.9"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:DetectTouch" order="5" duration="5.0">
+    <hasTransition xsi:type="highLevelNaoApp:OnNotDetectTransition" name="notDetected" hasNextHLActivity="//@hasActivity.9"/>
+    <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="RIGHT_HAND" hasNextHLActivity="//@hasActivity.10"/>
+    <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="HEAD" hasNextHLActivity="//@hasActivity.11" touchDetection="HEAD"/>
+    <part>RIGHT_HAND</part>
+    <part>HEAD</part>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ReportWeather" order="6">
+    <hasTransition hasNextHLActivity="//@hasActivity.6"/>
+    <greekCities>Thessaloniki</greekCities>
+    <greekCities>Athens</greekCities>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Dice" order="7">
+    <hasTransition hasNextHLActivity="//@hasActivity.2"/>
+    <hasTransition hasNextHLActivity="//@hasActivity.7"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="8" text="Goodbye, application terminated." volume="80">
+    <hasTransition hasNextHLActivity="//@hasActivity.8"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Finish" order="9"/>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="10" text="I will detect touch on right hand or head." volume="80">
+    <hasTransition hasNextHLActivity="//@hasActivity.4"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="11" text="You touched my right hand." volume="80">
+    <hasTransition hasNextHLActivity="//@hasActivity.6"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="12" text="You touched my head." volume="80">
+    <hasTransition hasNextHLActivity="//@hasActivity.6"/>
+  </hasActivity>
+</highLevelNaoApp:NaoApp>

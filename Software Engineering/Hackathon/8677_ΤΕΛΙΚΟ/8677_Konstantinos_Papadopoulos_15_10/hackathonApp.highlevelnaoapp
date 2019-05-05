@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<highLevelNaoApp:NaoApp xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:highLevelNaoApp="file:/home/student/Desktop/hackathon/metamodel/highLevelNaoApp.ecore">
+  <hasActivity xsi:type="highLevelNaoApp:Start" order="1">
+    <hasTransition hasNextHLActivity="//@hasActivity.1"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="2" text="Hello, welcome to sky net!!!" volume="80">
+    <hasTransition hasNextHLActivity="//@hasActivity.3"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Join" order="3">
+    <hasTransition hasNextHLActivity="//@hasActivity.6"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Fork" order="4" endsAtJoin="//@hasActivity.2" hasActivityGroup="//@hasActivity.4 //@hasActivity.5">
+    <hasTransition hasNextHLActivity="//@hasActivity.5"/>
+    <hasTransition hasNextHLActivity="//@hasActivity.4"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="5">
+    <hasTransition hasNextHLActivity="//@hasActivity.2"/>
+    <hasActivity xsi:type="highLevelNaoApp:DetectTouch" order="5_0" bDetectForever="true">
+      <hasTransition xsi:type="highLevelNaoApp:OnNotDetectTransition" name="notDetected" hasNextHLActivity="//@hasActivity.4/@hasActivity.0"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="HEAD" hasNextHLActivity="//@hasActivity.4/@hasActivity.1" touchDetection="HEAD"/>
+      <part>HEAD</part>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:Talk" order="5_1" text="You touched my head, you will be terminated!" volume="80">
+      <hasTransition hasNextHLActivity="//@hasActivity.4/@hasGroupFinishActivity"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="5_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.4/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="5_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="6">
+    <hasTransition hasNextHLActivity="//@hasActivity.2"/>
+    <hasActivity xsi:type="highLevelNaoApp:Dice" order="6_0">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.1"/>
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.2"/>
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.3"/>
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.4"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyMotion" order="6_1" duration="5.0" safetyDistance="0.3">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.5"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyMotion" order="6_2" direction="BACKWARDS" duration="3.0" safetyDistance="0.3">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.5"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyMotion" order="6_3" direction="RIGHT" distance="2.0" safetyDistance="0.3">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.5"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyMotion" order="6_4" direction="LEFT" distance="1.0" safetyDistance="0.3">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.5"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:Dice" order="6_5">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.6"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:Talk" order="6_6" text="I will detect for motion...acurrately, like a bat, with sonars." volume="80">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.7"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:DetectMotion" order="6_7" bDetectForever="true">
+      <hasTransition xsi:type="highLevelNaoApp:OnNotDetectTransition" name="notDetected" hasNextHLActivity="//@hasActivity.5/@hasActivity.7"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="detected" hasNextHLActivity="//@hasActivity.5/@hasActivity.8" bOtherEventDetection="true"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:Talk" order="6_8" text="Something moved, ohh the horror." volume="80">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasGroupFinishActivity"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="6_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="6_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="7" text="Goodbye, you have been erased (Arnold Schwatzeineger reference)!" volume="80">
+    <hasTransition hasNextHLActivity="//@hasActivity.7"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Finish" order="8"/>
+</highLevelNaoApp:NaoApp>

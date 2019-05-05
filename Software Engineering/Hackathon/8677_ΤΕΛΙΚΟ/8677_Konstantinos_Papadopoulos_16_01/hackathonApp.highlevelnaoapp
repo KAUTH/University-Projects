@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<highLevelNaoApp:NaoApp xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:highLevelNaoApp="file:/home/student/Desktop/hackathon/metamodel/highLevelNaoApp.ecore">
+  <hasActivity xsi:type="highLevelNaoApp:Start" order="1">
+    <hasTransition hasNextHLActivity="//@hasActivity.1"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:BodyStance" order="2">
+    <hasTransition hasNextHLActivity="//@hasActivity.2"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="3" text="Hey, I am from the future, give everyone here 1 grade!!" volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.4"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Join" order="4">
+    <hasTransition hasNextHLActivity="//@hasActivity.9"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Fork" order="5" endsAtJoin="//@hasActivity.3" hasActivityGroup="//@hasActivity.5 //@hasActivity.6">
+    <hasTransition hasNextHLActivity="//@hasActivity.5"/>
+    <hasTransition hasNextHLActivity="//@hasActivity.6"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="6">
+    <hasTransition hasNextHLActivity="//@hasActivity.3"/>
+    <hasActivity xsi:type="highLevelNaoApp:Dice" order="6_0">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.1"/>
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.2"/>
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.3"/>
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.4"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyMotion" order="6_1" distance="1.0" safetyDistance="0.3">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyMotion" order="6_2" direction="BACKWARDS" distance="1.0" safetyDistance="0.3">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyMotion" order="6_3" direction="LEFT" distance="1.0" safetyDistance="0.3">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyMotion" order="6_4" direction="RIGHT" distance="1.0" safetyDistance="0.3">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="6_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="6_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="7">
+    <hasTransition hasNextHLActivity="//@hasActivity.3"/>
+    <hasActivity xsi:type="highLevelNaoApp:DetectTouch" order="7_0" bDetectForever="true">
+      <hasTransition xsi:type="highLevelNaoApp:OnNotDetectTransition" name="notDetected" hasNextHLActivity="//@hasActivity.6/@hasActivity.0"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="HEAD" hasNextHLActivity="//@hasActivity.6/@hasGroupFinishActivity" touchDetection="HEAD"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnPreemptTransition" name="onDetect_HEAD" hasNextHLActivity="//@hasActivity.5" type="ON_DETECT" touchDetection="HEAD"/>
+      <part>HEAD</part>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="7_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.6/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="7_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Join" order="8">
+    <hasTransition hasNextHLActivity="//@hasActivity.13"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Fork" order="9" endsAtJoin="//@hasActivity.7" hasActivityGroup="//@hasActivity.10 //@hasActivity.11 //@hasActivity.12">
+    <hasTransition hasNextHLActivity="//@hasActivity.10"/>
+    <hasTransition hasNextHLActivity="//@hasActivity.11"/>
+    <hasTransition hasNextHLActivity="//@hasActivity.12"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="10" text="I will now demonstrate more complex capabilities and start threads C, D, E, with a loud voice!" volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.8"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="11">
+    <hasTransition hasNextHLActivity="//@hasActivity.7"/>
+    <hasActivity xsi:type="highLevelNaoApp:BodyStance" order="11_0">
+      <hasTransition hasNextHLActivity="//@hasActivity.10/@hasActivity.1"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:BodyStance" order="11_1" stance="SIT">
+      <hasTransition hasNextHLActivity="//@hasActivity.10/@hasActivity.0"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="11_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.10/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="11_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="12">
+    <hasTransition hasNextHLActivity="//@hasActivity.7"/>
+    <hasActivity xsi:type="highLevelNaoApp:Talk" order="12_0" text="Where are you or I will put you to sleep, I will do it anyway!!" volume="100">
+      <hasTransition hasNextHLActivity="//@hasActivity.11/@hasActivity.1"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:Sleep" order="12_1" duration="2.0">
+      <hasTransition hasNextHLActivity="//@hasActivity.11/@hasActivity.2"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:DetectHuman" order="12_2" duration="2.0">
+      <hasTransition xsi:type="highLevelNaoApp:OnNotDetectTransition" name="notDetected" hasNextHLActivity="//@hasActivity.11/@hasActivity.0"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnPreemptTransition" name="onDetectStop" hasNextHLActivity="//@hasActivity.10" type="ON_DETECT" bOtherEventDetection="true"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="detected" hasNextHLActivity="//@hasActivity.11/@hasActivity.3" bOtherEventDetection="true"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:Talk" order="12_3" text="Not you!! Mister Zolotas!" volume="80">
+      <hasTransition hasNextHLActivity="//@hasActivity.11/@hasGroupFinishActivity"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="12_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.11/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="12_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="13">
+    <hasTransition hasNextHLActivity="//@hasActivity.7"/>
+    <hasActivity xsi:type="highLevelNaoApp:DetectTouch" order="13_0" bDetectForever="true">
+      <hasTransition xsi:type="highLevelNaoApp:OnNotDetectTransition" name="notDetected" hasNextHLActivity="//@hasActivity.12/@hasActivity.0"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="HEAD" hasNextHLActivity="//@hasActivity.12/@hasActivity.1" touchDetection="HEAD"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnPreemptTransition" name="onDetect_HEAD" hasNextHLActivity="//@hasActivity.10" type="ON_DETECT" touchDetection="HEAD"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnPreemptTransition" name="onDetect_HEAD" hasNextHLActivity="//@hasActivity.11" type="ON_DETECT" touchDetection="HEAD"/>
+      <part>HEAD</part>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:Talk" order="13_1" text="Kill em all!!!" volume="100">
+      <hasTransition hasNextHLActivity="//@hasActivity.12/@hasGroupFinishActivity"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="13_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.12/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="13_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="14" text="Goodbye, one more challenge to go!" volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.14"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Finish" order="15"/>
+</highLevelNaoApp:NaoApp>

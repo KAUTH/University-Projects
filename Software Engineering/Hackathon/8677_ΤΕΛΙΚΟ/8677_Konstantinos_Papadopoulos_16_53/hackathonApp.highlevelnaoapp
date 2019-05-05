@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<highLevelNaoApp:NaoApp xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:highLevelNaoApp="file:/home/student/Desktop/hackathon/metamodel/highLevelNaoApp.ecore">
+  <hasActivity xsi:type="highLevelNaoApp:Start" order="1">
+    <hasTransition hasNextHLActivity="//@hasActivity.1"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:BodyStance" order="2">
+    <hasTransition hasNextHLActivity="//@hasActivity.3"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Join" order="3">
+    <hasTransition hasNextHLActivity="//@hasActivity.6"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Fork" order="4" endsAtJoin="//@hasActivity.2" hasActivityGroup="//@hasActivity.4 //@hasActivity.5">
+    <hasTransition hasNextHLActivity="//@hasActivity.4"/>
+    <hasTransition hasNextHLActivity="//@hasActivity.5"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="5">
+    <hasTransition hasNextHLActivity="//@hasActivity.2"/>
+    <hasActivity xsi:type="highLevelNaoApp:Listen" order="5_0" bDetectForever="true">
+      <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="SpeechRecognitionFailure" hasNextHLActivity="//@hasActivity.4/@hasActivity.0"/>
+      <hasLexicon>
+        <sentence text="Hey NAO">
+          <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="Hey NAO" hasNextHLActivity="//@hasActivity.4/@hasGroupFinishActivity"/>
+        </sentence>
+      </hasLexicon>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="5_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.4/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="5_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="6">
+    <hasTransition hasNextHLActivity="//@hasActivity.2"/>
+    <hasActivity xsi:type="highLevelNaoApp:DetectHuman" order="6_0" bDetectForever="true">
+      <hasTransition xsi:type="highLevelNaoApp:OnNotDetectTransition" name="notDetected" hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+      <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="detected" hasNextHLActivity="//@hasActivity.5/@hasGroupFinishActivity" bOtherEventDetection="true"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="6_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.5/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="6_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="7" text="Hello, welcome to the library, I am ROLAS, your Robo Librarian Assistant System. Are you a guest or registerd user?" volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.7"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Listen" order="8" bDetectForever="true">
+    <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="SpeechRecognitionFailure" hasNextHLActivity="//@hasActivity.7"/>
+    <hasLexicon>
+      <sentence text="Registered">
+        <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="Registered" hasNextHLActivity="//@hasActivity.9"/>
+      </sentence>
+      <sentence text="Guest">
+        <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="Guest" hasNextHLActivity="//@hasActivity.8"/>
+      </sentence>
+    </hasLexicon>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="9" text="As a guest you only check the availability of books. There are two books in the library, Romeo and Legend." volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.10"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="10" text="As a registered user you only check the description or the availability. Touch my head for the availability or my hand for the description. Select Romeo or Legend." volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.14"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Listen" order="11" bDetectForever="true">
+    <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="SpeechRecognitionFailure" hasNextHLActivity="//@hasActivity.10"/>
+    <hasLexicon>
+      <sentence text="Legend">
+        <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="Legend" hasNextHLActivity="//@hasActivity.12"/>
+      </sentence>
+      <sentence text="Romeo">
+        <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="Romeo" hasNextHLActivity="//@hasActivity.11"/>
+      </sentence>
+    </hasLexicon>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="12" text="Romeo and Juliet is not in the library." volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.13"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="13" text="Legend is not in the library! ha ha" volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.13"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Finish" order="14"/>
+  <hasActivity xsi:type="highLevelNaoApp:DetectTouch" order="15" bDetectForever="true">
+    <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="HEAD" hasNextHLActivity="//@hasActivity.10" touchDetection="HEAD"/>
+    <hasTransition xsi:type="highLevelNaoApp:OnDetectTransition" name="HANDS" hasNextHLActivity="//@hasActivity.15" touchDetection="HANDS"/>
+    <hasTransition xsi:type="highLevelNaoApp:OnNotDetectTransition" name="notDetected" hasNextHLActivity="//@hasActivity.14"/>
+    <part>HEAD</part>
+    <part>HANDS</part>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Listen" order="16" bDetectForever="true">
+    <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="SpeechRecognitionFailure" hasNextHLActivity="//@hasActivity.15"/>
+    <hasLexicon>
+      <sentence text="Legend">
+        <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="Legend" hasNextHLActivity="//@hasActivity.16"/>
+      </sentence>
+      <sentence text="Romeo">
+        <hasTransition xsi:type="highLevelNaoApp:OnListenTransition" name="Romeo" hasNextHLActivity="//@hasActivity.18"/>
+      </sentence>
+    </hasLexicon>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Talk" order="18" text="I have no idea what book Legend is." volume="100">
+    <hasTransition hasNextHLActivity="//@hasActivity.13"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Join" order="20">
+    <hasTransition hasNextHLActivity="//@hasActivity.13"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:Fork" order="21" endsAtJoin="//@hasActivity.17" hasActivityGroup="//@hasActivity.19 //@hasActivity.20">
+    <hasTransition hasNextHLActivity="//@hasActivity.19"/>
+    <hasTransition hasNextHLActivity="//@hasActivity.20"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="22">
+    <hasTransition hasNextHLActivity="//@hasActivity.17"/>
+    <hasActivity xsi:type="highLevelNaoApp:Talk" order="22_0" text="Romeo and Juliet is a love story, bla bla bla" volume="100">
+      <hasTransition hasNextHLActivity="//@hasActivity.19/@hasGroupFinishActivity"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="22_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.19/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="22_GroupFinish"/>
+  </hasActivity>
+  <hasActivity xsi:type="highLevelNaoApp:ActivityGroup" order="23">
+    <hasTransition hasNextHLActivity="//@hasActivity.17"/>
+    <hasActivity xsi:type="highLevelNaoApp:ArmMotion" order="23_0" armMotion="OPEN">
+      <hasTransition hasNextHLActivity="//@hasActivity.20/@hasActivity.1"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:ArmMotion" order="23_1" armMotion="CLOSE">
+      <hasTransition hasNextHLActivity="//@hasActivity.20/@hasActivity.2"/>
+    </hasActivity>
+    <hasActivity xsi:type="highLevelNaoApp:ArmMotion" order="23_2">
+      <hasTransition hasNextHLActivity="//@hasActivity.20/@hasGroupFinishActivity"/>
+    </hasActivity>
+    <hasGroupStartActivity xsi:type="highLevelNaoApp:GroupStart" order="23_GroupStart">
+      <hasTransition hasNextHLActivity="//@hasActivity.20/@hasActivity.0"/>
+    </hasGroupStartActivity>
+    <hasGroupFinishActivity xsi:type="highLevelNaoApp:GroupFinish" order="23_GroupFinish"/>
+  </hasActivity>
+</highLevelNaoApp:NaoApp>
