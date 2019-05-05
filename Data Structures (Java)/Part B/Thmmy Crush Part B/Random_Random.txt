@@ -1,0 +1,9 @@
+Random Player	Random	303	Random Player	Random	235	
+Random Player	Random	266	Heuristic Player	Random	301	
+Random Player	Random	302	Heuristic Player	Random	275	
+Heuristic Player	Random	300	Random Player	Random	187	
+Random Player	Random	300	Random Player	Random	257	
+Random Player	Random	303	Heuristic Player	Random	225	
+Random Player	Random	296	Random Player	Random	309	
+Random Player	Random	306	Random Player	Random	294	
+Random Player	Random	290	Heuristic Player	Random	303	
