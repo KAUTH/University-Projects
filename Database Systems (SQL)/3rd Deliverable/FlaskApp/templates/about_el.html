@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>
+      BirdwatchingDB
+    </title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static',filename='Monochrome.svg') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='josefinSlab.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='robotoSlab.css') }}">
+
+  </head>
+
+  <body style="background:#fafafa;box-sizing:border-box">
+    <header>
+      <span class="header_main"> BirdwatchingDB </span>
+      <br/>
+      <span class="header_misc"> a collective birdwatching platform</span>
+    </header>
+
+    <nav>
+      <ul class="main-nav">
+        <li><a href="{{ url_for('index_el') }}"> Αρχική </a> </li>
+        <li><a href="{{ url_for('about_el') }}"> Σχετικά </a> </li>
+        <li><a href="{{ url_for('contact_el') }}"> Επικοινωνία </a> </li>
+        
+        <div class="nav-right">
+            <li><a href="{{ url_for('index_en') }}" class="t"><object class="lang-icon"  data="{{ url_for('static',filename='drawing-3.svg') }}" type="image/svg+xml" style="pointer-events:none;" > </object> <span id="lang"> ΕΛ </span> </a> </li>
+          
+          <li><button id="signin"> <span id="signstatus">          {% if session['username'] %}
+              {{session['username']}}
+             {% else %}
+              Σύνδεση
+             {% endif %}
+             </button> </li>
+        </div>
+      </ul>
+
+    </nav>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+       <div class="modal-content">
+         
+         <div class="modal-header">
+           <span class="close">&times;</span>
+           <h2>
+             {% if session['username'] %}
+               Αποσύνδεση
+             {% else %}
+               Σύνδεση
+             {% endif %}
+           </h2>
+         </div>
+ 
+         <div class="modal-body">
+           {% if session['username'] %}
+           <form 
+           action="{{url_for('signout')}}" method="post">
+           <br>
+           <input type="submit" class="submitbutton" value="Αποσύνδεση">
+           </form>
+           {% else %}
+           <form 
+           action="{{url_for('signin')}}" method="post">
+           <br>
+           <br>
+           <label for="uname"><b>Όνομα Χρήστη</b></label>
+           <input type="text" placeholder="e.g. Administropoulos" name="uname" required>
+ 
+           <br>
+           <br>
+           <label for="pwd"><b>Κωδικός</b></label>
+           <input type="password" placeholder="*******" name="pwd" required>
+ 
+           <br>
+           <br>
+           <br>
+           <input type="submit" class="submitbutton" value="Σύνδεση">
+           <input type="reset" class="resetbutton" value="Επαναφορά">
+           </form>
+           {% endif %}
+         </div>
+ 
+       </div>
+     </div>
+
+    <br><br>
+    <h2 align="center" style="font-family:'Roboto Slab',serif;font-size:20pt;">Καλώς ήρθατε στη Birdwatching Database!</h2>
+    
+    <br>
+
+      <div class="content">
+        <div class="card">
+         <br>
+          <div class="container">
+            <div class="greeting">Σκοπός της βάσης δεδομένων</div> 
+            <p style="font-family:'Roboto Slab',serif;font-size:12.5pt;"><br>
+              Η παρούσα εφαρμογή αποτελεί μία προσπάθεια 
+              μηχανογράφησης των πληροφοριών και διαδικασιών που αφορούν την παρακολούθηση πτηνών στο φυσικό τους περιβάλλον.</p>
+              
+              <p style="font-family:'Roboto Slab',serif;font-size:12.5pt;">
+              Η εφαρμογή έχει μεγάλη έμφαση στους εγχώριους βιότοπους οπού διαβιούν χιλιάδες είδη πτηνών αποδημητικών και μη αποδημητικών.
+              </p>
+              <br>
+          </div>
+        </div>
+      </div> 
+
+
+     
+
+    <footer>
+      <div class="foot_text"> Copyright &copy 2019 </div>
+    </footer>
+
+    <script>
+      var modal = document.getElementById('myModal');
+      //document.getElementById("signstatus").innerHTML="Admin";
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("signin");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on the button, open the modal
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      } 
+
+
+    </script>
+  </body>
+
+</html>
+

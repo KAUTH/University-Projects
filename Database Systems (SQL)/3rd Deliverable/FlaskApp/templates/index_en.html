@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html >
+
+  <head>
+
+    <title>
+      BirdwatchingDB
+    </title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static',filename='Monochrome.svg') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='josefinSlab.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='robotoSlab.css') }}">
+
+  </head>
+
+  <body style="background:#fafafa;box-sizing:border-box;" onload="load()">
+    <header>
+      <span class="header_main"> BirdwatchingDB </span>
+      <br/>
+      <span class="header_misc"> a collective birdwatching platform</span>
+    </header>
+
+    <nav>
+      <ul class="main-nav">
+        <li><a href="{{ url_for('index_en') }}"> Home </a> </li>
+        <li><a href="{{ url_for('about_en') }}"> About </a> </li>
+        <li><a href="{{ url_for('contact_en') }}"> Contact </a> </li>
+        
+        <div class="nav-right">
+            <li><a href="{{ url_for('index_el') }}" class="t"><object class="lang-icon"  data="{{ url_for('static',filename='drawing-3.svg') }}" type="image/svg+xml" style="pointer-events:none;" > </object> <span id="lang"> EN </span> </a> </li>
+          
+          <li><button id="signin"> <span id="signstatus"> 
+           {% if session['username'] %}
+            {{session['username']}}
+           {% else %}
+            Sign in
+           {% endif %}
+          </button> </li>
+        </div>
+      </ul>
+
+    </nav>
+
+    <div id="myModal" class="modal">
+
+       <!-- Modal content -->
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>
+            {% if session['username'] %}
+              Sign out
+            {% else %}
+              Sign in
+            {% endif %}
+          </h2>
+        </div>
+
+        <div class="modal-body">
+          {% if session['username'] %}
+          <form 
+          action="{{url_for('signout')}}" method="post">
+          <br>
+          <input type="submit" class="submitbutton" value="Sign out">
+          </form>
+          {% else %}
+          <form 
+          action="{{url_for('signin')}}" method="post">
+          <br>
+          <br>
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="e.g. Administropoulos" name="uname" required>
+
+          <br>
+          <br>
+          <label for="pwd"><b>Password</b></label>
+          <input type="password" placeholder="*******" name="pwd" required>
+
+          <br>
+          <br>
+          <br>
+          <input type="submit" class="submitbutton" value="Sign in">
+          <input type="reset" class="resetbutton" value="Reset">
+          </form>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+
+    <br>
+    <div class="qcontent" id="container1">
+        <div class="card">
+         <br>
+          <div class="container">
+
+            <button class="dropbtn" id="menubtn1" onclick="drop(this)" title="Change search card"
+            onmouseout="style.background='linear-gradient(to bottom right,rgba(0,115,204,0.8), rgba(0,204,186,0.8))'" onmouseover="style.background=' linear-gradient(to bottom right,rgba(0,115,204,0.8), rgba(0,15,104,0.8))'">
+            <span id="query1">Search species reproduction period</span>
+            </button> 
+            <div class="dropdown-content" id="myDropdown1" align="center">
+              <button class="searchBtn" onclick="changeCard(this)" id="1" >Search species reproduction period</button>
+              <button class="searchBtn" onclick="changeCard(this)" id="2">Search species weight </button>
+              <button class="searchBtn" onclick="changeCard(this)"
+              id="3">Search user programs</button>
+            </div>
+            <br>
+            <br>
+            
+            <form action="{{url_for('result1')}}" style="font-family:'Roboto Slab',serif;font-size:14pt;" method="POST"><br>
+
+             
+
+              <table align="center">
+
+              <tr>
+                
+                <td style="padding-right: 20px;">
+                    <label for="name">Reproduction Period Start</label>
+                    <input type="text" id="name" class="qIn" name="rep_start" style="text-transform: uppercase" title="JUN,JUL,AUG,etc" maxlength="3" required>
+                </td>
+
+
+                <td>
+                  <label for="phone">Reproduction Period End</label>
+                  <input type="text" id="phone" class="qIn" name="rep_end" style="text-transform: uppercase" maxlength="3" title="JUN,JUL,AUG,etc" required>
+                </td>
+
+              </tr>
+
+              </table>
+                
+
+              &nbsp;
+              <input type="submit" class="sbutton" value="Submit">
+
+            </form>
+
+
+            <br>
+
+          </div>
+          
+          
+        </div>
+      </div> 
+
+
+
+      <div class="qcontent" id="container2">
+          <div class="card">
+           <br>
+            <div class="container">
+  
+              <button class="dropbtn" id="menubtn2" onclick="drop(this)" title="Change search card"><span id="query2">Search species weight </span>
+              </button> 
+              <div class="dropdown-content" id="myDropdown2" align="center">
+                  <button class="searchBtn" onclick="changeCard(this)" id="1" >Search species reproduction period</button>
+                  <button class="searchBtn" onclick="changeCard(this)" id="2">Search species weight </button>
+                  <button class="searchBtn" onclick="changeCard(this)"
+                  id="3">Search user programs</button>
+              </div>
+              <br>
+              <br>
+              
+              <form action="{{url_for('result2')}}" style="font-family:'Roboto Slab',serif;font-size:11pt;" method="post"><br>
+  
+               
+  
+                <table align="center">
+  
+                <tr>
+                  
+                  <td style="padding-right: 20px;">
+                      <label for="name">Species gender</label>
+                      <input type="text" id="name" class="qIn" name="gender" style="text-transform: uppercase" title="full text"  maxlength="6" required>
+                  </td>
+  
+  
+                  <td>
+                    <label for="phone">Max weight:</label>
+                    <input type="number" id="phone" class="qIn" name="max_weight" style="text-align:center" min="0.1" step="0.1" max="40" required>
+                  </td>
+  
+                </tr>
+
+  
+                </table>
+                  
+  
+                &nbsp;
+                <input type="submit" class="sbutton" value="Submit">
+  
+              </form>
+  
+  
+              <br>
+  
+            </div>
+            
+            
+          </div>
+        </div> 
+    
+
+        <div class="qcontent" id="container3">
+            <div class="card">
+             <br>
+              <div class="container">
+    
+                <button class="dropbtn" id="menubtn3" onclick="drop(this)" title="Change search card"><span id="query3">Search User Programs</span>
+                </button> 
+                <div class="dropdown-content" id="myDropdown3" align="center">
+                    <button class="searchBtn" onclick="changeCard(this)" id="1" >Search species reproduction period</button>
+                    <button class="searchBtn" onclick="changeCard(this)" id="2">Search species weight </button>
+                    <button class="searchBtn" onclick="changeCard(this)"
+                    id="3">Search user programs</button>
+                </div>
+                <br>
+                <br>
+                
+                <form action="{{url_for('result3')}}" style="font-family:'Roboto Slab',serif;font-size:11pt;" method="post"><br>
+    
+                 
+    
+                  <table align="center">
+    
+                  <tr>
+                    <td style="padding-right: 10px; width=20%">
+                        <label for="name">Program Due Day</label>
+                        <input type="number" id="name" class="qIn" name="day" style="text-align:center" min="1" max="31" required>
+                    </td>
+    
+    
+                    <td style="padding-right: 10px; width=20%">
+                      <label for="phone">Program Due Month</label>
+                      <input type="number" id="phone" class="qIn" name="month" style="text-align:center" min="1" max="12" required>
+                    </td>
+                  
+                    <td style="padding-right: 10px; width=20%">
+                      <label for="phone">Program Due Year</label>
+                      <input type="number" id="phone" class="qIn" name="year" min="2000" max="2030" style="text-align:center" required>
+                    </td>
+
+                  </tr>
+    
+                  </table>
+                    
+    
+                  &nbsp;
+                  <input type="submit" class="sbutton" value="Submit">
+    
+                </p>
+    
+    
+                <br>
+    
+              </form>
+              
+              </div>
+            </div>
+          </div> 
+
+
+
+    <footer>
+      <div class="foot_text"> Copyright &copy 2019 </div>
+    </footer>
+
+    <script>
+      var modal = document.getElementById('myModal');
+
+      //document.getElementById("signstatus").innerHTML="Admin";
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("signin");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on the button, open the modal
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+         modal.style.display = "none";
+        }
+      } 
+
+      function drop(element) { 
+        var k=parseInt(element.id[7]); 
+         
+  document.getElementById("myDropdown"+k).classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+  
+  var i=1;
+  while(i<=3){
+  if (!e.target.matches('.dropbtn')) {
+  var myDropdown = document.getElementById("myDropdown"+i);
+    if (myDropdown.classList.contains('show')) {
+      myDropdown.classList.remove('show');
+    }
+  }
+  i=i+1;
+}
+}
+
+function load() {
+
+  document.getElementById("menubtn1").style.background = "linear-gradient(to bottom right,rgba(0,115,204,0.8), rgba(0,15,104,0.8))";
+  
+  document.getElementById("query1").innerHTML="Click to change search card";
+
+  setTimeout(function reset() {
+  document.getElementById("menubtn1").style.background = "linear-gradient(to bottom right,rgba(0,115,204,0.8), rgba(0,204,186,0.8))";
+  document.getElementById("query1").innerHTML="Search species reproduction period ";
+},2000);
+}
+
+function changeCard(element) {
+  var card;
+
+  var n=3;
+  var str="container";
+  var i=1;
+
+  while (i<=3){
+    if (element.id!=i)
+    {  
+      card=document.getElementById(str+i);
+      card.style.display = "none";
+      //card.classList.toggle("show");
+    }
+    else
+    {
+      card=document.getElementById(str+element.id);
+      card.style.display = "block";
+      //card.classList.remove("show");
+    }
+    i=i+1;
+  }
+} 
+
+
+
+    </script>
+  </body>
+
+</html>
