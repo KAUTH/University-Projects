@@ -1,0 +1,2 @@
+void hangman(int n);
+
