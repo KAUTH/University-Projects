@@ -1,0 +1,1 @@
+SELECT  user_name FROM edit_history WHERE species_name = 'A.Nipalensis';
