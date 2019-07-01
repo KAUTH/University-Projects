@@ -1,1 +1,1 @@
-Digital filter implementations based on MATLAB.
+Digital filter implementations based on Matlab.
