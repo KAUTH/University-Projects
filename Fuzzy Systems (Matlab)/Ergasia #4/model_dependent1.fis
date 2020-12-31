@@ -1,0 +1,289 @@
+[System]
+Name='model_dependent1'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=51
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='in1'
+Range=[29.999999999999 83]
+NumMFs=51
+MF1='in1cluster1':'gaussmf',[3.74766594028877 53]
+MF2='in1cluster2':'gaussmf',[3.74766594028877 59]
+MF3='in1cluster3':'gaussmf',[3.74766594028877 40]
+MF4='in1cluster4':'gaussmf',[3.74766594028877 51]
+MF5='in1cluster5':'gaussmf',[3.74766594028877 67]
+MF6='in1cluster6':'gaussmf',[3.74766594028877 43]
+MF7='in1cluster7':'gaussmf',[3.74766594028877 55]
+MF8='in1cluster8':'gaussmf',[3.74766594028877 38]
+MF9='in1cluster9':'gaussmf',[3.74766594028877 59]
+MF10='in1cluster10':'gaussmf',[3.74766594028877 58]
+MF11='in1cluster11':'gaussmf',[3.74766594028877 45]
+MF12='in1cluster12':'gaussmf',[3.74766594028877 44]
+MF13='in1cluster13':'gaussmf',[3.74766594028877 70]
+MF14='in1cluster14':'gaussmf',[3.74766594028877 74]
+MF15='in1cluster15':'gaussmf',[3.74766594028877 47]
+MF16='in1cluster16':'gaussmf',[3.74766594028877 55]
+MF17='in1cluster17':'gaussmf',[3.74766594028877 50]
+MF18='in1cluster18':'gaussmf',[3.74766594028877 38]
+MF19='in1cluster19':'gaussmf',[3.74766594028877 48]
+MF20='in1cluster20':'gaussmf',[3.74766594028877 65]
+MF21='in1cluster21':'gaussmf',[3.74766594028877 34]
+MF22='in1cluster22':'gaussmf',[3.74766594028877 43]
+MF23='in1cluster23':'gaussmf',[3.74766594028877 51]
+MF24='in1cluster24':'gaussmf',[3.74766594028877 48]
+MF25='in1cluster25':'gaussmf',[3.74766594028877 52]
+MF26='in1cluster26':'gaussmf',[3.74766594028877 45]
+MF27='in1cluster27':'gaussmf',[3.74766594028877 70]
+MF28='in1cluster28':'gaussmf',[3.74766594028877 44]
+MF29='in1cluster29':'gaussmf',[3.74766594028877 61]
+MF30='in1cluster30':'gaussmf',[3.74766594028877 74]
+MF31='in1cluster31':'gaussmf',[3.74766594028877 57]
+MF32='in1cluster32':'gaussmf',[3.74766594028877 52]
+MF33='in1cluster33':'gaussmf',[3.74766594028877 50]
+MF34='in1cluster34':'gaussmf',[3.74766594028877 54]
+MF35='in1cluster35':'gaussmf',[3.74766594028877 60]
+MF36='in1cluster36':'gaussmf',[3.74766594028877 61]
+MF37='in1cluster37':'gaussmf',[3.74766594028877 53]
+MF38='in1cluster38':'gaussmf',[3.74766594028877 62]
+MF39='in1cluster39':'gaussmf',[3.74766594028877 34]
+MF40='in1cluster40':'gaussmf',[3.74766594028877 83]
+MF41='in1cluster41':'gaussmf',[3.74766594028877 44]
+MF42='in1cluster42':'gaussmf',[3.74766594028877 67]
+MF43='in1cluster43':'gaussmf',[3.74766594028877 63]
+MF44='in1cluster44':'gaussmf',[3.74766594028877 52]
+MF45='in1cluster45':'gaussmf',[3.74766594028877 57]
+MF46='in1cluster46':'gaussmf',[3.74766594028877 62]
+MF47='in1cluster47':'gaussmf',[3.74766594028877 70]
+MF48='in1cluster48':'gaussmf',[3.74766594028877 49]
+MF49='in1cluster49':'gaussmf',[3.74766594028877 48]
+MF50='in1cluster50':'gaussmf',[3.74766594028877 43]
+MF51='in1cluster51':'gaussmf',[3.74766594028877 47]
+
+[Input2]
+Name='in2'
+Range=[57.999999999999 69]
+NumMFs=51
+MF1='in2cluster1':'gaussmf',[0.777817459305273 61]
+MF2='in2cluster2':'gaussmf',[0.777817459305273 64]
+MF3='in2cluster3':'gaussmf',[0.777817459305273 58]
+MF4='in2cluster4':'gaussmf',[0.777817459305273 66]
+MF5='in2cluster5':'gaussmf',[0.777817459305273 66]
+MF6='in2cluster6':'gaussmf',[0.777817459305273 64]
+MF7='in2cluster7':'gaussmf',[0.777817459305273 58]
+MF8='in2cluster8':'gaussmf',[0.777817459305273 60]
+MF9='in2cluster9':'gaussmf',[0.777817459305273 60]
+MF10='in2cluster10':'gaussmf',[0.777817459305273 67]
+MF11='in2cluster11':'gaussmf',[0.777817459305273 67]
+MF12='in2cluster12':'gaussmf',[0.777817459305273 61]
+MF13='in2cluster13':'gaussmf',[0.777817459305273 68]
+MF14='in2cluster14':'gaussmf',[0.777817459305273 63]
+MF15='in2cluster15':'gaussmf',[0.777817459305273 58]
+MF16='in2cluster16':'gaussmf',[0.777817459305273 69]
+MF17='in2cluster17':'gaussmf',[0.777817459305273 63]
+MF18='in2cluster18':'gaussmf',[0.777817459305273 66]
+MF19='in2cluster19':'gaussmf',[0.777817459305273 61]
+MF20='in2cluster20':'gaussmf',[0.777817459305273 58]
+MF21='in2cluster21':'gaussmf',[0.777817459305273 67]
+MF22='in2cluster22':'gaussmf',[0.777817459305273 64]
+MF23='in2cluster23':'gaussmf',[0.777817459305273 59]
+MF24='in2cluster24':'gaussmf',[0.777817459305273 58]
+MF25='in2cluster25':'gaussmf',[0.777817459305273 66]
+MF26='in2cluster26':'gaussmf',[0.777817459305273 67]
+MF27='in2cluster27':'gaussmf',[0.777817459305273 58]
+MF28='in2cluster28':'gaussmf',[0.777817459305273 64]
+MF29='in2cluster29':'gaussmf',[0.777817459305273 62]
+MF30='in2cluster30':'gaussmf',[0.777817459305273 65]
+MF31='in2cluster31':'gaussmf',[0.777817459305273 64]
+MF32='in2cluster32':'gaussmf',[0.777817459305273 62]
+MF33='in2cluster33':'gaussmf',[0.777817459305273 63]
+MF34='in2cluster34':'gaussmf',[0.777817459305273 60]
+MF35='in2cluster35':'gaussmf',[0.777817459305273 59]
+MF36='in2cluster36':'gaussmf',[0.777817459305273 68]
+MF37='in2cluster37':'gaussmf',[0.777817459305273 63]
+MF38='in2cluster38':'gaussmf',[0.777817459305273 65]
+MF39='in2cluster39':'gaussmf',[0.777817459305273 66]
+MF40='in2cluster40':'gaussmf',[0.777817459305273 58]
+MF41='in2cluster41':'gaussmf',[0.777817459305273 63]
+MF42='in2cluster42':'gaussmf',[0.777817459305273 64]
+MF43='in2cluster43':'gaussmf',[0.777817459305273 60]
+MF44='in2cluster44':'gaussmf',[0.777817459305273 69]
+MF45='in2cluster45':'gaussmf',[0.777817459305273 62]
+MF46='in2cluster46':'gaussmf',[0.777817459305273 59]
+MF47='in2cluster47':'gaussmf',[0.777817459305273 58]
+MF48='in2cluster48':'gaussmf',[0.777817459305273 64]
+MF49='in2cluster49':'gaussmf',[0.777817459305273 67]
+MF50='in2cluster50':'gaussmf',[0.777817459305273 59]
+MF51='in2cluster51':'gaussmf',[0.777817459305273 62]
+
+[Input3]
+Name='in3'
+Range=[-1e-12 46]
+NumMFs=51
+MF1='in3cluster1':'gaussmf',[3.25269119345819 1]
+MF2='in3cluster2':'gaussmf',[3.25269119345819 0]
+MF3='in3cluster3':'gaussmf',[3.25269119345819 0]
+MF4='in3cluster4':'gaussmf',[3.25269119345819 1]
+MF5='in3cluster5':'gaussmf',[3.25269119345819 0]
+MF6='in3cluster6':'gaussmf',[3.25269119345819 2]
+MF7='in3cluster7':'gaussmf',[3.25269119345819 1]
+MF8='in3cluster8':'gaussmf',[3.25269119345819 1]
+MF9='in3cluster9':'gaussmf',[3.25269119345819 0]
+MF10='in3cluster10':'gaussmf',[3.25269119345819 0]
+MF11='in3cluster11':'gaussmf',[3.25269119345819 0]
+MF12='in3cluster12':'gaussmf',[3.25269119345819 0]
+MF13='in3cluster13':'gaussmf',[3.25269119345819 0]
+MF14='in3cluster14':'gaussmf',[3.25269119345819 0]
+MF15='in3cluster15':'gaussmf',[3.25269119345819 3]
+MF16='in3cluster16':'gaussmf',[3.25269119345819 3]
+MF17='in3cluster17':'gaussmf',[3.25269119345819 1]
+MF18='in3cluster18':'gaussmf',[3.25269119345819 0]
+MF19='in3cluster19':'gaussmf',[3.25269119345819 8]
+MF20='in3cluster20':'gaussmf',[3.25269119345819 0]
+MF21='in3cluster21':'gaussmf',[3.25269119345819 7]
+MF22='in3cluster22':'gaussmf',[3.25269119345819 0]
+MF23='in3cluster23':'gaussmf',[3.25269119345819 3]
+MF24='in3cluster24':'gaussmf',[3.25269119345819 11]
+MF25='in3cluster25':'gaussmf',[3.25269119345819 4]
+MF26='in3cluster26':'gaussmf',[3.25269119345819 1]
+MF27='in3cluster27':'gaussmf',[3.25269119345819 0]
+MF28='in3cluster28':'gaussmf',[3.25269119345819 6]
+MF29='in3cluster29':'gaussmf',[3.25269119345819 5]
+MF30='in3cluster30':'gaussmf',[3.25269119345819 3]
+MF31='in3cluster31':'gaussmf',[3.25269119345819 1]
+MF32='in3cluster32':'gaussmf',[3.25269119345819 3]
+MF33='in3cluster33':'gaussmf',[3.25269119345819 13]
+MF34='in3cluster34':'gaussmf',[3.25269119345819 11]
+MF35='in3cluster35':'gaussmf',[3.25269119345819 17]
+MF36='in3cluster36':'gaussmf',[3.25269119345819 1]
+MF37='in3cluster37':'gaussmf',[3.25269119345819 24]
+MF38='in3cluster38':'gaussmf',[3.25269119345819 19]
+MF39='in3cluster39':'gaussmf',[3.25269119345819 9]
+MF40='in3cluster40':'gaussmf',[3.25269119345819 2]
+MF41='in3cluster41':'gaussmf',[3.25269119345819 19]
+MF42='in3cluster42':'gaussmf',[3.25269119345819 8]
+MF43='in3cluster43':'gaussmf',[3.25269119345819 1]
+MF44='in3cluster44':'gaussmf',[3.25269119345819 3]
+MF45='in3cluster45':'gaussmf',[3.25269119345819 14]
+MF46='in3cluster46':'gaussmf',[3.25269119345819 13]
+MF47='in3cluster47':'gaussmf',[3.25269119345819 4]
+MF48='in3cluster48':'gaussmf',[3.25269119345819 10]
+MF49='in3cluster49':'gaussmf',[3.25269119345819 7]
+MF50='in3cluster50':'gaussmf',[3.25269119345819 2]
+MF51='in3cluster51':'gaussmf',[3.25269119345819 0]
+
+[Output1]
+Name='out1'
+Range=[0.999999999999 2]
+NumMFs=51
+MF1='out1cluster1':'constant',[15856.213813816]
+MF2='out1cluster2':'constant',[-11181.8342637152]
+MF3='out1cluster3':'constant',[161.887568241226]
+MF4='out1cluster4':'constant',[3019.68185373752]
+MF5='out1cluster5':'constant',[400.854886883583]
+MF6='out1cluster6':'constant',[0]
+MF7='out1cluster7':'constant',[-28397.1915218198]
+MF8='out1cluster8':'constant',[-1769.10882723111]
+MF9='out1cluster9':'constant',[-19200.5598305752]
+MF10='out1cluster10':'constant',[-1065.85233996983]
+MF11='out1cluster11':'constant',[1058.12019582699]
+MF12='out1cluster12':'constant',[-11417.4134231825]
+MF13='out1cluster13':'constant',[207.561791452762]
+MF14='out1cluster14':'constant',[-379.413219155925]
+MF15='out1cluster15':'constant',[-6605.03883704503]
+MF16='out1cluster16':'constant',[0]
+MF17='out1cluster17':'constant',[-53530.8993462724]
+MF18='out1cluster18':'constant',[7039.29557028917]
+MF19='out1cluster19':'constant',[13497.2063092424]
+MF20='out1cluster20':'constant',[0]
+MF21='out1cluster21':'constant',[0]
+MF22='out1cluster22':'constant',[10235.576081352]
+MF23='out1cluster23':'constant',[7404.56586731567]
+MF24='out1cluster24':'constant',[-5995.25255167433]
+MF25='out1cluster25':'constant',[0]
+MF26='out1cluster26':'constant',[0]
+MF27='out1cluster27':'constant',[0]
+MF28='out1cluster28':'constant',[0]
+MF29='out1cluster29':'constant',[-12332.1212563843]
+MF30='out1cluster30':'constant',[0]
+MF31='out1cluster31':'constant',[-32842.1099346456]
+MF32='out1cluster32':'constant',[0]
+MF33='out1cluster33':'constant',[0]
+MF34='out1cluster34':'constant',[0]
+MF35='out1cluster35':'constant',[0]
+MF36='out1cluster36':'constant',[0]
+MF37='out1cluster37':'constant',[0]
+MF38='out1cluster38':'constant',[0]
+MF39='out1cluster39':'constant',[0]
+MF40='out1cluster40':'constant',[0]
+MF41='out1cluster41':'constant',[0]
+MF42='out1cluster42':'constant',[0]
+MF43='out1cluster43':'constant',[5818.16155146247]
+MF44='out1cluster44':'constant',[0]
+MF45='out1cluster45':'constant',[0]
+MF46='out1cluster46':'constant',[0]
+MF47='out1cluster47':'constant',[0]
+MF48='out1cluster48':'constant',[0]
+MF49='out1cluster49':'constant',[0]
+MF50='out1cluster50':'constant',[1513.27262763823]
+MF51='out1cluster51':'constant',[-67127.0529228843]
+
+[Rules]
+1 1 1, 1 (1) : 1
+2 2 2, 2 (1) : 1
+3 3 3, 3 (1) : 1
+4 4 4, 4 (1) : 1
+5 5 5, 5 (1) : 1
+6 6 6, 6 (1) : 1
+7 7 7, 7 (1) : 1
+8 8 8, 8 (1) : 1
+9 9 9, 9 (1) : 1
+10 10 10, 10 (1) : 1
+11 11 11, 11 (1) : 1
+12 12 12, 12 (1) : 1
+13 13 13, 13 (1) : 1
+14 14 14, 14 (1) : 1
+15 15 15, 15 (1) : 1
+16 16 16, 16 (1) : 1
+17 17 17, 17 (1) : 1
+18 18 18, 18 (1) : 1
+19 19 19, 19 (1) : 1
+20 20 20, 20 (1) : 1
+21 21 21, 21 (1) : 1
+22 22 22, 22 (1) : 1
+23 23 23, 23 (1) : 1
+24 24 24, 24 (1) : 1
+25 25 25, 25 (1) : 1
+26 26 26, 26 (1) : 1
+27 27 27, 27 (1) : 1
+28 28 28, 28 (1) : 1
+29 29 29, 29 (1) : 1
+30 30 30, 30 (1) : 1
+31 31 31, 31 (1) : 1
+32 32 32, 32 (1) : 1
+33 33 33, 33 (1) : 1
+34 34 34, 34 (1) : 1
+35 35 35, 35 (1) : 1
+36 36 36, 36 (1) : 1
+37 37 37, 37 (1) : 1
+38 38 38, 38 (1) : 1
+39 39 39, 39 (1) : 1
+40 40 40, 40 (1) : 1
+41 41 41, 41 (1) : 1
+42 42 42, 42 (1) : 1
+43 43 43, 43 (1) : 1
+44 44 44, 44 (1) : 1
+45 45 45, 45 (1) : 1
+46 46 46, 46 (1) : 1
+47 47 47, 47 (1) : 1
+48 48 48, 48 (1) : 1
+49 49 49, 49 (1) : 1
+50 50 50, 50 (1) : 1
+51 51 51, 51 (1) : 1

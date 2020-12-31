@@ -1,0 +1,184 @@
+[System]
+Name='model_independent1'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=30
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='in1'
+Range=[30 83]
+NumMFs=30
+MF1='in1cluster1':'gaussmf',[3.7476659402887 53]
+MF2='in1cluster2':'gaussmf',[3.7476659402887 59]
+MF3='in1cluster3':'gaussmf',[3.7476659402887 41]
+MF4='in1cluster4':'gaussmf',[3.7476659402887 51]
+MF5='in1cluster5':'gaussmf',[3.7476659402887 67]
+MF6='in1cluster6':'gaussmf',[3.7476659402887 55]
+MF7='in1cluster7':'gaussmf',[3.7476659402887 38]
+MF8='in1cluster8':'gaussmf',[3.7476659402887 43]
+MF9='in1cluster9':'gaussmf',[3.7476659402887 43]
+MF10='in1cluster10':'gaussmf',[3.7476659402887 59]
+MF11='in1cluster11':'gaussmf',[3.7476659402887 58]
+MF12='in1cluster12':'gaussmf',[3.7476659402887 51]
+MF13='in1cluster13':'gaussmf',[3.7476659402887 45]
+MF14='in1cluster14':'gaussmf',[3.7476659402887 52]
+MF15='in1cluster15':'gaussmf',[3.7476659402887 70]
+MF16='in1cluster16':'gaussmf',[3.7476659402887 74]
+MF17='in1cluster17':'gaussmf',[3.7476659402887 44]
+MF18='in1cluster18':'gaussmf',[3.7476659402887 48]
+MF19='in1cluster19':'gaussmf',[3.7476659402887 70]
+MF20='in1cluster20':'gaussmf',[3.7476659402887 52]
+MF21='in1cluster21':'gaussmf',[3.7476659402887 55]
+MF22='in1cluster22':'gaussmf',[3.7476659402887 45]
+MF23='in1cluster23':'gaussmf',[3.7476659402887 50]
+MF24='in1cluster24':'gaussmf',[3.7476659402887 49]
+MF25='in1cluster25':'gaussmf',[3.7476659402887 74]
+MF26='in1cluster26':'gaussmf',[3.7476659402887 34]
+MF27='in1cluster27':'gaussmf',[3.7476659402887 60]
+MF28='in1cluster28':'gaussmf',[3.7476659402887 48]
+MF29='in1cluster29':'gaussmf',[3.7476659402887 57]
+MF30='in1cluster30':'gaussmf',[3.7476659402887 65]
+
+[Input2]
+Name='in2'
+Range=[58 69]
+NumMFs=30
+MF1='in2cluster1':'gaussmf',[0.777817459305202 61]
+MF2='in2cluster2':'gaussmf',[0.777817459305202 64]
+MF3='in2cluster3':'gaussmf',[0.777817459305202 58]
+MF4='in2cluster4':'gaussmf',[0.777817459305202 66]
+MF5='in2cluster5':'gaussmf',[0.777817459305202 66]
+MF6='in2cluster6':'gaussmf',[0.777817459305202 58]
+MF7='in2cluster7':'gaussmf',[0.777817459305202 60]
+MF8='in2cluster8':'gaussmf',[0.777817459305202 64]
+MF9='in2cluster9':'gaussmf',[0.777817459305202 64]
+MF10='in2cluster10':'gaussmf',[0.777817459305202 60]
+MF11='in2cluster11':'gaussmf',[0.777817459305202 67]
+MF12='in2cluster12':'gaussmf',[0.777817459305202 59]
+MF13='in2cluster13':'gaussmf',[0.777817459305202 67]
+MF14='in2cluster14':'gaussmf',[0.777817459305202 66]
+MF15='in2cluster15':'gaussmf',[0.777817459305202 68]
+MF16='in2cluster16':'gaussmf',[0.777817459305202 63]
+MF17='in2cluster17':'gaussmf',[0.777817459305202 61]
+MF18='in2cluster18':'gaussmf',[0.777817459305202 58]
+MF19='in2cluster19':'gaussmf',[0.777817459305202 58]
+MF20='in2cluster20':'gaussmf',[0.777817459305202 62]
+MF21='in2cluster21':'gaussmf',[0.777817459305202 69]
+MF22='in2cluster22':'gaussmf',[0.777817459305202 67]
+MF23='in2cluster23':'gaussmf',[0.777817459305202 63]
+MF24='in2cluster24':'gaussmf',[0.777817459305202 64]
+MF25='in2cluster25':'gaussmf',[0.777817459305202 65]
+MF26='in2cluster26':'gaussmf',[0.777817459305202 67]
+MF27='in2cluster27':'gaussmf',[0.777817459305202 59]
+MF28='in2cluster28':'gaussmf',[0.777817459305202 61]
+MF29='in2cluster29':'gaussmf',[0.777817459305202 64]
+MF30='in2cluster30':'gaussmf',[0.777817459305202 58]
+
+[Input3]
+Name='in3'
+Range=[0 46]
+NumMFs=30
+MF1='in3cluster1':'gaussmf',[3.25269119345812 1]
+MF2='in3cluster2':'gaussmf',[3.25269119345812 0]
+MF3='in3cluster3':'gaussmf',[3.25269119345812 0]
+MF4='in3cluster4':'gaussmf',[3.25269119345812 1]
+MF5='in3cluster5':'gaussmf',[3.25269119345812 0]
+MF6='in3cluster6':'gaussmf',[3.25269119345812 1]
+MF7='in3cluster7':'gaussmf',[3.25269119345812 1]
+MF8='in3cluster8':'gaussmf',[3.25269119345812 2]
+MF9='in3cluster9':'gaussmf',[3.25269119345812 0]
+MF10='in3cluster10':'gaussmf',[3.25269119345812 0]
+MF11='in3cluster11':'gaussmf',[3.25269119345812 0]
+MF12='in3cluster12':'gaussmf',[3.25269119345812 3]
+MF13='in3cluster13':'gaussmf',[3.25269119345812 0]
+MF14='in3cluster14':'gaussmf',[3.25269119345812 4]
+MF15='in3cluster15':'gaussmf',[3.25269119345812 0]
+MF16='in3cluster16':'gaussmf',[3.25269119345812 0]
+MF17='in3cluster17':'gaussmf',[3.25269119345812 0]
+MF18='in3cluster18':'gaussmf',[3.25269119345812 11]
+MF19='in3cluster19':'gaussmf',[3.25269119345812 0]
+MF20='in3cluster20':'gaussmf',[3.25269119345812 3]
+MF21='in3cluster21':'gaussmf',[3.25269119345812 3]
+MF22='in3cluster22':'gaussmf',[3.25269119345812 1]
+MF23='in3cluster23':'gaussmf',[3.25269119345812 1]
+MF24='in3cluster24':'gaussmf',[3.25269119345812 10]
+MF25='in3cluster25':'gaussmf',[3.25269119345812 3]
+MF26='in3cluster26':'gaussmf',[3.25269119345812 7]
+MF27='in3cluster27':'gaussmf',[3.25269119345812 17]
+MF28='in3cluster28':'gaussmf',[3.25269119345812 8]
+MF29='in3cluster29':'gaussmf',[3.25269119345812 1]
+MF30='in3cluster30':'gaussmf',[3.25269119345812 0]
+
+[Output1]
+Name='out1'
+Range=[1 2]
+NumMFs=30
+MF1='out1cluster1':'constant',[85.9412735035421]
+MF2='out1cluster2':'constant',[-261.279172712376]
+MF3='out1cluster3':'constant',[-30.4457702952665]
+MF4='out1cluster4':'constant',[13.6685977903555]
+MF5='out1cluster5':'constant',[-147.861580309256]
+MF6='out1cluster6':'constant',[108.707276236228]
+MF7='out1cluster7':'constant',[-24.2407908274279]
+MF8='out1cluster8':'constant',[70.341940147343]
+MF9='out1cluster9':'constant',[7.95191034811978]
+MF10='out1cluster10':'constant',[96.1139279727758]
+MF11='out1cluster11':'constant',[110.959049925891]
+MF12='out1cluster12':'constant',[16.4008735207707]
+MF13='out1cluster13':'constant',[4080.13785751235]
+MF14='out1cluster14':'constant',[-140.833598603528]
+MF15='out1cluster15':'constant',[-136.583707039493]
+MF16='out1cluster16':'constant',[472.879968900309]
+MF17='out1cluster17':'constant',[-59.7658871836462]
+MF18='out1cluster18':'constant',[34.2358483547288]
+MF19='out1cluster19':'constant',[57.4749729237802]
+MF20='out1cluster20':'constant',[528.360209974741]
+MF21='out1cluster21':'constant',[1246.37959567832]
+MF22='out1cluster22':'constant',[-4262.60831769938]
+MF23='out1cluster23':'constant',[380.627078643474]
+MF24='out1cluster24':'constant',[-1.25273975463338]
+MF25='out1cluster25':'constant',[638.25548032504]
+MF26='out1cluster26':'constant',[104.402613703232]
+MF27='out1cluster27':'constant',[70.3651237731225]
+MF28='out1cluster28':'constant',[79.9528080848741]
+MF29='out1cluster29':'constant',[273.651411961008]
+MF30='out1cluster30':'constant',[102.873103133241]
+
+[Rules]
+1 1 1, 1 (1) : 1
+2 2 2, 2 (1) : 1
+3 3 3, 3 (1) : 1
+4 4 4, 4 (1) : 1
+5 5 5, 5 (1) : 1
+6 6 6, 6 (1) : 1
+7 7 7, 7 (1) : 1
+8 8 8, 8 (1) : 1
+9 9 9, 9 (1) : 1
+10 10 10, 10 (1) : 1
+11 11 11, 11 (1) : 1
+12 12 12, 12 (1) : 1
+13 13 13, 13 (1) : 1
+14 14 14, 14 (1) : 1
+15 15 15, 15 (1) : 1
+16 16 16, 16 (1) : 1
+17 17 17, 17 (1) : 1
+18 18 18, 18 (1) : 1
+19 19 19, 19 (1) : 1
+20 20 20, 20 (1) : 1
+21 21 21, 21 (1) : 1
+22 22 22, 22 (1) : 1
+23 23 23, 23 (1) : 1
+24 24 24, 24 (1) : 1
+25 25 25, 25 (1) : 1
+26 26 26, 26 (1) : 1
+27 27 27, 27 (1) : 1
+28 28 28, 28 (1) : 1
+29 29 29, 29 (1) : 1
+30 30 30, 30 (1) : 1
