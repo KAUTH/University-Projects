@@ -1,1 +1,1 @@
-Programs built with the MIPS assemly language.
+Programs built with the MIPS assembly language.
