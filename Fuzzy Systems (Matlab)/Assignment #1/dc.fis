@@ -1,0 +1,63 @@
+[System]
+Name='dc'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='prod'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='e'
+Range=[-1 1]
+NumMFs=7
+MF1='NL':'trimf',[-1.33333333333333 -1 -0.666666666666667]
+MF2='NM':'trimf',[-1 -0.666666666666667 -0.333333333333333]
+MF3='NS':'trimf',[-0.666666666666667 -0.333333333333333 -5.55111512312578e-17]
+MF4='ZR':'trimf',[-0.333333333333333 0 0.333333333333333]
+MF5='PS':'trimf',[-5.55111512312578e-17 0.333333333333333 0.666666666666667]
+MF6='PM':'trimf',[0.333333333333333 0.666666666666667 1]
+MF7='PL':'trimf',[0.666666666666667 1 1.33333333333333]
+
+[Input2]
+Name='de'
+Range=[-1 1]
+NumMFs=9
+MF1='NV':'trimf',[-1.25 -1 -0.75]
+MF2='NL':'trimf',[-1 -0.75 -0.5]
+MF3='NM':'trimf',[-0.75 -0.5 -0.25]
+MF4='NS':'trimf',[-0.5 -0.25 0]
+MF5='ZR':'trimf',[-0.25 0 0.25]
+MF6='PS':'trimf',[0 0.25 0.5]
+MF7='PM':'trimf',[0.25 0.5 0.75]
+MF8='PL':'trimf',[0.5 0.75 1]
+MF9='PV':'trimf',[0.75 1 1.25]
+
+[Output1]
+Name='du'
+Range=[-1 1]
+NumMFs=9
+MF1='NV':'trimf',[-1.25 -1 -0.75]
+MF2='NL':'trimf',[-1 -0.75 -0.5]
+MF3='NM':'trimf',[-0.75 -0.5 -0.25]
+MF4='NS':'trimf',[-0.5 -0.25 0]
+MF5='ZR':'trimf',[-0.25 0 0.25]
+MF6='PS':'trimf',[0 0.25 0.5]
+MF7='PM':'trimf',[0.25 0.5 0.75]
+MF8='PL':'trimf',[0.5 0.75 1]
+MF9='PV':'trimf',[0.75 1 1.25]
+
+[Rules]
+5 6, 7 (8) : 9
+4 5, 6 (7) : 8
+3 4, 5 (6) : 7
+2 3, 4 (5) : 6
+1 2, 3 (4) : 5
+1 1, 2 (3) : 4
+1 1, 1 (2) : 3
+1 1, 1 (1) : 2
+1 1, 1 (1) : 1

@@ -1,1 +1,0 @@
-To see the results, run the "car_script.m" file.

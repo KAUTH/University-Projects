@@ -1,0 +1,202 @@
+%% PART 1 - TSK classification in Simple Dataset
+
+% Dataset:  
+% Link: 
+
+clear;
+close all;
+
+%% Data preprocessing 
+
+% load Haberman's Survival dataset
+data = load('haberman.data');
+
+[n_s, n_f] = size(data);
+
+% find all the distinct labels of the output feature 
+labels = unique(data(:,n_f));
+
+% output feature vector
+out = data(:, n_f);
+
+% initialize the three sets
+data_tr=[];
+data_val=[];
+data_test=[];
+
+clust_radius = [0.2 0.7];
+epoch = 5;
+
+data_tr_per_label={};
+data_val_per_label={};
+data_test_per_label={};
+
+bounds_per_label = {}; 
+
+% calculate each label's frequency
+n_label = zeros(1, length(labels));
+for i=1:length(labels)
+  
+  % calculate the frequency of each label in the orginal dataset
+  n_label(i) = length( out( out==labels(i) ) );
+  freq(i) = n_label(i)/n_s;
+  
+  % number of current label samples to be distributed in each of the 3 sets
+  n_samples_tr = floor(freq(i)*0.6*n_s);
+  n_samples_val = floor(freq(i)*0.2*n_s);
+  n_samples_test = n_label(i) - n_samples_tr - n_samples_val;
+  
+  % assert that the sum of the 3 sets add up to n_label
+  assert( n_samples_tr + n_samples_val + n_samples_test == n_label(i) );
+  
+  % sample uniformly on random taking into account gloabal min,max value
+  % representantion in the three disjoint sets produced
+  [data_tr_label, data_res] = preprocess_samples(data( out==labels(i),: ),...
+    n_samples_tr);
+
+  [data_val_label, data_res] = preprocess_samples(data_res, n_samples_val);
+  
+  [data_test_label, data_res] = disjoint_samples(data_res, n_samples_test);
+  
+  data_tr_per_label{end+1} = data_tr_label;
+  data_val_per_label{end+1} = data_val_label;
+  data_test_per_label{end+1} = data_test_label;
+  
+  bounds_per_label{end+1} = [min(data_tr_label)-10^(-12); max(data_tr_label)];
+
+  % concatenate the per label disjoint sets to their global sets
+  data_tr = [data_tr; data_tr_label];
+  data_val = [data_val; data_val_label];
+  data_test = [data_test; data_test_label];
+end
+
+% assert size of each set add up to n_s
+assert( size(data_tr,1) + size(data_val,1) + size(data_test,1) == n_s);
+
+  
+%% Class dependent TSK modeling
+
+figcount = 0;
+for kc = 1:length(clust_radius)
+    %{
+    user_centers = [];
+    for i=1:length(labels)
+      % calculate the per label cluster centers
+      centers = subclust(data_tr_per_label{i}, clust_radius(kc),...
+        bounds_per_label{i},[1.25 0.5 0.15 0]);
+      user_centers = [user_centers; centers];
+    end
+    
+    bounds_per_label_mat = [];
+    for l=1:length(labels)
+      bounds_per_label_mat = [ bounds_per_label_mat; bounds_per_label{l}];
+    end
+
+    bounds = [min(bounds_per_label_mat); max(bounds_per_label_mat)];
+    
+    % initialization of the model
+    model = genfis2( data_tr(:,1:n_f-1),data_tr(:,n_f),...
+    clust_radius(kc),bounds,[1.25 0.5 0.15 0], user_centers );
+    
+    txt = sprintf('model_dependent%d',kc);
+    writefis(model,txt);
+    %}
+    
+    txt = sprintf('model_dependent%d',kc);
+    model = readfis(txt);
+    
+    % optimize model
+    [model_out, trErr, steps, model_c, chkErr] =  anfis(data_tr,...
+      model,[epoch 0 0.01 0.9 1.1], NaN, data_val);
+    
+    % evaluate model on test data
+    yout = evalfis( data_test(:,1:n_f-1), model_c);
+    yout = round(yout); % round to nearest integer
+
+    % calculate metrics
+    [errmat, OA, UA, PA, Khat] = class_metrics( yout,...
+      data_test(:,n_f) );
+    
+    figcount = figcount + 1;
+    figure(figcount);
+    num_epoch = size(steps,1);
+    plot(1:num_epoch, trErr);
+    text = sprintf('Learning Curve for TSK Class dependent, Radius: %f ',...
+      clust_radius(kc)); 
+    title(text);
+    
+    figcount = figcount + 1;
+    figure(figcount);
+    for l=1:n_f-1
+      subplot(2,2,l);
+      plotmf(model_c,'input',l);
+      txt = sprintf('Membership functions Class Dependent, Radius: %.2f ',...
+        clust_radius(kc));
+      title(txt);
+    end
+    
+    txt = sprintf('Metrics - Class Dependent, Radius: %f ',...
+      labels(i),clust_radius(kc));
+    disp(txt);
+    errmat
+    OA
+    UA
+    PA
+    Khat
+end
+
+
+%% Class independent TSK model training
+
+for kc = 1:length(clust_radius)
+  %{
+  % initialize model
+  model = genfis2( data_tr(:,1:n_f-1),data_tr(:,n_f),...
+    clust_radius(kc) );
+  
+  txt=sprintf('model_independent%d',kc);
+  writefis(model,txt);
+  %}
+    
+  txt = sprintf('model_independent%d',kc);
+  model = readfis(txt);
+  
+  % optimize model
+  [model_out, trErr, steps, model_c, chkErr] =  anfis(data_tr,...
+    model,[epoch 0 0.01 0.9 1.1], NaN, data_val);
+  
+  % evaluate on test data
+  ypred = evalfis(data_test(:,1:n_f-1), model_c);
+  ypred = round(ypred); % round to nearest integer
+    
+  % calculate metrics
+  [errmat, OA, UA, PA, Khat] = class_metrics( ypred, data_test(:,n_f) );
+  
+  figcount = figcount + 1;
+  figure( figcount );
+  num_epoch = size(steps,1);
+  plot(1:num_epoch, trErr);
+  text = sprintf('Learning Curve for TSK independent , Radius: %f ',...
+    clust_radius(kc)); 
+  title(text);
+
+  figcount = figcount + 1;
+  figure( figcount );
+  for l=1:n_f-1
+    subplot(2,2,l);
+    plotmf(model_c,'input',l);
+    txt = sprintf('Membership functions Class Independent, Radius: %.2f ',...
+        clust_radius(kc));
+    title(txt);
+  end
+
+  txt = sprintf('Metrics for independent , Radius: %f ',...
+    labels(i),clust_radius(kc));
+  disp(txt);
+  errmat
+  OA
+  UA
+  PA
+  Khat
+  
+end
